@@ -12,6 +12,7 @@ public:
         }
     };
     
+    // Iterative method which utilizes queue
     bool VerifySquenceOfBST(std::vector<int> sequence) {
         int N = sequence.size();
         if (N == 0) return false;
@@ -23,7 +24,7 @@ public:
             TwoInt curr = q.front();
             q.pop();
             if (curr.diff() < 2) continue;
-            
+
             int root = sequence[curr.r];
             int leftEnd = 0;
             for (int i = curr.r - 1; i >= curr.l; --i) {
