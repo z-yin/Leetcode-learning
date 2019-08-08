@@ -1,3 +1,4 @@
+// 16 ms, 9.9 MB
 class Solution {
 public:
     int maxArea(vector<int>& height) {
