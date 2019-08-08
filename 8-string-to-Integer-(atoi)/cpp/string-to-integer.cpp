@@ -1,3 +1,8 @@
+#include <string>
+#include <climits>
+#include <cctype>
+using namespace std;
+
 // 8 ms, 8.2 MB
 class Solution1 {
 public:

@@ -1,3 +1,7 @@
+#include <vector>
+#include <algorithm>
+using namespace std;
+
 // 16 ms, 9.9 MB
 class Solution {
 public:
