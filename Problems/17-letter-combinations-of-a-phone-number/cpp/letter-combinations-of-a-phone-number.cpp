@@ -3,7 +3,7 @@ using namespace std;
 
 // 0 ms, 8.3 MB
 // similar to accumulator 
-class Solution {
+class Solution1 {
 public:
     vector<string> letterCombinations(string digits) {
         if ( digits.empty() ) return vector<string> {};
@@ -36,6 +36,37 @@ public:
                 }
             }
         }
+        return ret;
+    }
+};
+
+// backtracking. 4 ms, 8.7 MB
+class Solution2 {
+    
+private:
+    vector<string> ret;
+    const vector<string> letterMapping = {
+        "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
+    };
+    
+    void letterCombination (const string &digits, int index, const string &s) {
+        
+        if ( index == digits.size() ) {
+            ret.emplace_back(s);
+            return;
+        }
+        
+        string letters = letterMapping[digits[index] - '2'];
+        for (int i = 0; i < letters.size(); ++ i)
+            letterCombination(digits, index + 1, s + letters[i]);
+    }
+    
+public:
+    vector<string> letterCombinations(string digits) {
+        ret.clear();
+        if (digits.size() == 0) return ret;
+        
+        letterCombination(digits, 0, "");
         return ret;
     }
 };
