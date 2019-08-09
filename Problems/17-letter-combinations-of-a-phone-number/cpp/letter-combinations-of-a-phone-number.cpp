@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 using namespace std;
 
 // 0 ms, 8.3 MB
@@ -40,32 +41,30 @@ public:
     }
 };
 
-// backtracking. 4 ms, 8.7 MB
+// backtracking. 4 ms, 8.6 MB
 class Solution2 {
-    
+
 private:
     vector<string> ret;
-    const vector<string> letterMapping = {
-        "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
-    };
-    
+    const string letterMapping[8] = { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+
     void letterCombination (const string &digits, int index, const string &s) {
-        
+
         if ( index == digits.size() ) {
             ret.emplace_back(s);
             return;
         }
-        
+
         string letters = letterMapping[digits[index] - '2'];
-        for (int i = 0; i < letters.size(); ++ i)
-            letterCombination(digits, index + 1, s + letters[i]);
+        for (char letter : letters)
+            letterCombination(digits, index + 1, s + letter);
     }
-    
+
 public:
     vector<string> letterCombinations(string digits) {
         ret.clear();
-        if (digits.size() == 0) return ret;
-        
+        if (digits.empty()) return ret;
+
         letterCombination(digits, 0, "");
         return ret;
     }
