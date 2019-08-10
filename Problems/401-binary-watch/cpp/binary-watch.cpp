@@ -17,7 +17,7 @@ private:
             return;
         }
 
-        // [start...10 - remain)
+        // [start...10 - remain + 1)
         for (int i = start; i < 10 - remain + 1; ++ i) {
             if (i < 4 && (h + tm[i] > 11)) {
                 i = 3;
