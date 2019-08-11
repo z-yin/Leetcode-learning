@@ -29,7 +29,8 @@ public:
 };
 
 
-// 4 ms, 8.3 MB. Backtraking. From large value to small value.
+// 4 ms, 8.3 MB. Backtraking. From large value to small value to avoid two many small values, making it 
+// waste a lot of time adding up to sum / 2.
 class Solution2 {
 private:
     bool ret;
