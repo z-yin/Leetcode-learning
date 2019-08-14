@@ -12,7 +12,7 @@ class Solution {
     int *memo = new int[size + 1];
     memo[0] = 1;
     memo[1] = 1;
-    
+
     for (int i = 2; i <= size; ++i) {
       memo[i] = 0;
       if (s[i - 1] != '0') {

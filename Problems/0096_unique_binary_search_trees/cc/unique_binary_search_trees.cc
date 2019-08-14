@@ -10,10 +10,10 @@ class Solution {
     memo_[1] = 1;
     return GetNumTrees(n);
   }
-  
+
  private:
   vector<int> memo_;
-  
+
   int GetNumTrees(const int& n) {
     if (memo_[n] != 0) {
       return memo_[n];
