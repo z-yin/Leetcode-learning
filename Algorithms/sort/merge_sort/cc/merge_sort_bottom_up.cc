@@ -28,7 +28,7 @@ void mergeSortBottomUp(T arr[], int n) {
   for (int sz = 1; sz <= n; sz += sz) {
     for (int i = 0; i + sz < n; i += 2 * sz) {
       // if not in order, merge
-      if (i + sz < n + 1 && arr[i + sz - 1] > arr[i + sz]) {
+      if (arr[i + sz - 1] > arr[i + sz]) {
         __merge(arr, i, i + sz - 1, min(n - 1, i + 2 * sz - 1));
       }
     }
