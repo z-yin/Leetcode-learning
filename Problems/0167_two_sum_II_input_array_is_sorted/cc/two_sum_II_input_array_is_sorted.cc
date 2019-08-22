@@ -2,7 +2,7 @@
 #include <unordered_map>
 using namespace std;
 
-// 4 ms, 9.6 MB
+// 4 ms, 9.6 MB. Using map.
 class Solution {
  public:
   vector<int> twoSum(vector<int>& numbers, int target) {
@@ -19,5 +19,26 @@ class Solution {
       }
     }
     return vector<int>{mp[numbers[i]] + 1, i + 1};
+  }
+};
+
+
+// 4 ms, 9.4 MB. Two pointers.
+class Solution2 {
+ public:
+  vector<int> twoSum(vector<int>& nums, int target) {
+    int i = 0;
+    int k = nums.size() - 1;
+    while (i < k) {
+      int sum2 = nums[i] + nums[k];
+      if (sum2 == target) {
+        break;
+      } else if (sum2 < target) {
+        ++i;
+      } else {
+        --k;
+      }
+    }
+    return vector<int>{i + 1, k + 1};
   }
 };
