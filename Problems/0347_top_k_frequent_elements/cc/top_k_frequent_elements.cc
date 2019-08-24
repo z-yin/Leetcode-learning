@@ -8,30 +8,15 @@ class Solution {
   vector<int> topKFrequent(vector<int>& nums, int k) {
     unordered_map<int, int> freq;
     vector<int> ret;
+    for (const auto& e : nums) ++freq[e];
 
-    int max_freq = 1;
-    for (const auto& e : nums) {
-      if (!freq.count(e)) {
-        freq.emplace(e, 1);
-      } else {
-        freq[e] += 1;
-        if (freq[e] > max_freq) {
-          max_freq = freq[e];
-        }
-      }
-    }
-
-    vector<int> bucket[max_freq + 1];
+    vector<vector<int>> bucket(nums.size() + 1);
     for (const auto& iter : freq) {
       bucket[iter.second].emplace_back(iter.first);
     }
-
-    for (int i = max_freq, cnt = 1; i >= 0 && cnt <= k; --i) {
-      if (!bucket[i].empty()) {
-        for (const int& e : bucket[i]) {
-          ret.emplace_back(e);
-          ++cnt;
-        }
+    for (int i = bucket.size() - 1; ret.size() < k; --i) {
+      for (const int& e : bucket[i]) {
+        ret.emplace_back(e);
       }
     }
     return ret;
