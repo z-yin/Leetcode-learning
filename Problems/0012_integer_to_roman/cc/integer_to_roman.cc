@@ -1,7 +1,7 @@
 #include <string>
 using namespace std;
 
-// 0 ms, 8.2 MB
+// 8 ms, 8.2 MB
 class Solution {
  public:
   string intToRoman(int num) {
