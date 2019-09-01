@@ -96,7 +96,7 @@ std::vector<int> preOrderIterative (TreeNode* r) {
 // Iterative in-order traversal
 std::vector<int> inOrderIterative (TreeNode* r) {
     // In-order sequence as return variable
-        std::vector<int> res;
+    std::vector<int> res;
     if (r) {
         // stack to store the future node that will be accessed
         std::stack<TreeNode*> s;
