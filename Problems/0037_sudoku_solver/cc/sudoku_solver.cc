@@ -111,7 +111,7 @@ class Solution3 {
       for (int j = 0; j < 9; ++j) {
         if (board[i][j] != '.') {
           int k = board[i][j] - '1';
-          row[i][k] = col[j][k] = box[i / 3][j / 3][k] = true;
+          row_[i][k] = col_[j][k] = box_[i / 3][j / 3][k] = true;
         }
       }
     }
@@ -124,7 +124,7 @@ class Solution3 {
   }
 
  private:
-  bool row[9][9] = {false}, col[9][9] = {false}, box[3][3][9] = {false};
+  bool row_[9][9] = {false}, col_[9][9] = {false}, box_[3][3][9] = {false};
 
   bool solve(vector<vector<char>>& board, int i, int j) {
     if (i == 9) {
@@ -139,13 +139,13 @@ class Solution3 {
     }
 
     for (int k = 0; k < 9; ++k) {
-      if (!row[i][k] && !col[j][k] && !box[i / 3][j / 3][k]) {
+      if (!row_[i][k] && !col_[j][k] && !box_[i / 3][j / 3][k]) {
         board[i][j] = k + '1';
-        row[i][k] = col[j][k] = box[i / 3][j / 3][k] = true;
+        row_[i][k] = col_[j][k] = box_[i / 3][j / 3][k] = true;
         if (solve(board, ii, jj)) {
           return true;
         }
-        row[i][k] = col[j][k] = box[i / 3][j / 3][k] = false;
+        row_[i][k] = col_[j][k] = box_[i / 3][j / 3][k] = false;
         board[i][j] = '.';
       }
     }
