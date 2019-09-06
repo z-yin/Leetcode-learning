@@ -27,7 +27,7 @@ class Solution1 {
   }
 };
 
-// 4 ms, 8.7 MB. BP and greedy.
+// 4 ms, 8.7 MB. Backtracking and greedy.
 class Solution2 {
  public:
   bool isMatch(string s, string p) {
