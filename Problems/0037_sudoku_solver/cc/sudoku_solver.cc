@@ -101,7 +101,7 @@ class Solution2 {
   }
 };
 
-// 0 ms, 8.7 MB. BP.
+// 0 ms, 8.7 MB. Backtracking.
 // Without 'option' variable, no need to store '.' so 10 -> 9 and other minor
 // changes but increase performance.
 class Solution3 {
