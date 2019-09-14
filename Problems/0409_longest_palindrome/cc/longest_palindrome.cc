@@ -5,7 +5,7 @@ using namespace std;
 class Solution {
  public:
   int longestPalindrome(string s) {
-    int count[58] = {0}; // 6 symbols between 'Z' and 'a'
+    int count[58] = {0};  // 6 symbols between 'Z' and 'a'
     for (const auto& c : s) {
       ++count[c - 'A'];
     }
