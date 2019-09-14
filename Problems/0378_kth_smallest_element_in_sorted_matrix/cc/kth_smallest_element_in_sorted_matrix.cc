@@ -1,6 +1,6 @@
 #include <queue>
 #include <vector>
-#include <cstdio>
+#include <iostream>
 using namespace std;
 
 // 60 ms, 11.9 MB. Min-heap.
@@ -76,6 +76,8 @@ class Solution3 {
  public:
   Solution3(){
     ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
   }
   int kthSmallest(vector<vector<int>>& matrix, int k) {
     int N = matrix.size();
