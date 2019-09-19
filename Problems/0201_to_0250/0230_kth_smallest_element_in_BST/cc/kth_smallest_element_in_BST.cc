@@ -30,7 +30,8 @@ class Solution1 {
   }
 };
 
-// 32 ms, 24.1 MB. Build another tree with count of elments.
+// 32 ms, 24.1 MB. Divede and conquer.
+// Build another tree with count of elments.
 // Optimization for finding the kth smallest of BST which is
 // modified (insert/delete operations) frequently.
 struct Node {
@@ -43,7 +44,7 @@ struct Node {
       : node(node), left(left), right(right), count(count) {}
 };
 
-class Solution {
+class Solution2 {
  public:
   int kthSmallest(TreeNode* root, int k) {
     int res;
