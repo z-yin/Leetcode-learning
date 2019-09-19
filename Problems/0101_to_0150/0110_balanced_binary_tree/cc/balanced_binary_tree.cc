@@ -1,6 +1,7 @@
 #include <algorithm>
 using namespace std;
 
+// 12 ms, 17.2 MB. Depth-first search.
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -8,7 +9,6 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-// 12 ms, 17.2 MB. Depth-first search.
 class Solution {
  public:
   bool isBalanced(TreeNode *root) {
@@ -24,15 +24,9 @@ class Solution {
       return 0;
     }
     int left = 0, right = 0;
-    if (node->left) {
-      left = depth(node->left);
-    }
-    if (node->right) {
-      right = depth(node->right);
-    }
-    if (abs(left - right) > 1) {
-      res = false;
-    }
+    if (node->left) left = depth(node->left);
+    if (node->right) right = depth(node->right);
+    if (abs(left - right) > 1) res = false;
     return 1 + max(left, right);
   }
 };
