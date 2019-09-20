@@ -19,16 +19,14 @@ class Trie {
 
   /** Inserts a word into the trie. */
   void insert(string word) {
-    if (!search(word)) {
-      Node *curr = root;
-      for (const auto &c : word) {
-        if (!curr->nodes.count(c)) {
-          (curr->nodes)[c] = new Node();
-        }
-        curr = (curr->nodes)[c];
+    Node *curr = root;
+    for (const auto &c : word) {
+      if (!curr->nodes.count(c)) {
+        (curr->nodes)[c] = new Node();
       }
-      curr->end = true;
+      curr = (curr->nodes)[c];
     }
+    curr->end = true;
   }
 
   /** Returns if the word is in the trie. */
