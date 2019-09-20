@@ -1,7 +1,7 @@
 #include <vector>
 using namespace std;
 
-// 24 ms, 14.1 MB. BP without skipping.
+// 24 ms, 14.1 MB. Backtracking without skipping.
 class Solution1 {
  public:
   void solveSudoku(vector<vector<char>>& board) {
@@ -46,7 +46,7 @@ class Solution1 {
   }
 };
 
-// 24 ms, 11.2 MB. BP, skipping not '.'.
+// 24 ms, 11.2 MB. Backtracking, skipping not '.'.
 class Solution2 {
  public:
   void solveSudoku(vector<vector<char>>& board) {
