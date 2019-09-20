@@ -19,7 +19,8 @@ class UnionFind {
   UnionFind(int count)
       : count_(count), parent_(new int[count_]), rank_(new int[count_]) {
     for (int i = 0; i < count; ++i) {
-      parent_[i] = rank_[i] = i;
+      parent_[i] = i;
+      rank_[i] = 1;
     }
 #if defined(ITERATIVE_COMPRESSION)
     cout << "ITERATIVE_COMPRESSION" << endl;
