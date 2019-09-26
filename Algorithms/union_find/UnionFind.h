@@ -1,5 +1,5 @@
 //
-// Created by Joy on 20/09/2019.
+// Created by Zhao Yin on 20/09/2019.
 //
 
 #ifndef ITERATIVE_COMPRESSION
