@@ -5,26 +5,15 @@ using namespace std;
 class Solution {
  public:
   double myPow(double x, int n) {
-    bool negative = false;
-    if (n < 0) {
-      negative = true;
-    }
-    long long power = abs((long long)n);
+    int sign = n > 0 ? 1 : -1;
+    long long nn = abs((long long)n);
     double res = 1;
-    while (power > 0) {
-      if (power % 2 == 0) {
-        x *= x;
-      } else {
-        res *= x;
-        if (power > 1) {
-          x *= x;
-        }
-      }
-      power /= 2;
+    while (nn) {
+      if (nn % 2 == 1) res *= x;
+      x *= x;
+      nn /= 2;
     }
-    if (negative) {
-      res = 1 / res;
-    }
+    if (sign == -1) res = 1 / res;
     return res;
   }
 };
