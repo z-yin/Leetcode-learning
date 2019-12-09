@@ -3,7 +3,7 @@
 using namespace std;
 
 // 12 ms, 13.4 MB. Backtracking
-class Solution {
+class Solution1 {
 private:
     vector<vector<string>> ret;
 
@@ -42,4 +42,47 @@ public:
         __partition(s, 0, tmp);
         return ret;
     }
+};
+
+// 16 ms	13.7 MB. DP and backtracking.
+class Solution2 {
+ public:
+  vector<vector<string>> res;
+  vector<vector<bool>> dp;
+  
+  vector<vector<string>> partition(string s) {
+    if (s.empty()) return res;
+    
+    int n = s.size();
+    dp = vector<vector<bool>>(n + 1, vector<bool>(n + 1, false));
+    for (int i = 0; i <= n; ++i) dp[i][i] = true;
+    for (int i = 0; i < n; ++i) dp[i][i + 1] = true;
+    
+    for (int j = 2; j <= n; ++j) {
+      int k = 0;
+      while (j + k <= n) {
+        dp[k][j + k] = s[k] == s[j + k - 1] && dp[k + 1][j + k - 1];
+        ++k;
+      }
+    }
+    
+    vector<string> v;
+    dfs(s, 0, v);
+    return res;
+  }
+  
+  void dfs(string &s, int from, vector<string> &v) {
+    if (from == s.size()) {
+      res.emplace_back(v);
+      return;
+    }
+    
+    for (int to = from + 1; to <= s.size(); ++to) {
+      if (dp[from][to]) {
+        v.emplace_back(s.substr(from, to - from));
+        dfs(s, to, v);
+        v.pop_back();
+      }
+    }
+  }
 };
