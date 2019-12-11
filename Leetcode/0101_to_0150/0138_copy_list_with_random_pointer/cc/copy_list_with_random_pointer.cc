@@ -17,7 +17,7 @@ class Node {
 };
 
 // 28 ms	22.1 MB. Unordered_map.
-class Solution {
+class Solution1 {
  public:
   Node* copyRandomList(Node* head) {
     if (!head) return head;
@@ -39,5 +39,35 @@ class Solution {
       head = head->next;
     }
     return h;
+  }
+};
+
+// 32 ms	21.9 MB. O(1).
+class Solution2 {
+ public:
+  Node* copyRandomList(Node* h) {
+    if (!h) return nullptr;
+
+    Node* t = h;
+    while (t) {
+      Node* curr = new Node(t->val, t->next, t->random);
+      t->next = curr;
+      t = curr->next;
+    }
+    t = h;
+    while (t) {
+      if (t->random) t->next->random = t->random->next;
+      t = t->next->next;
+    }
+    Node* nh = h->next;
+    t = h;
+    while (t->next->next) {
+      Node* tn = t->next;
+      t->next = tn->next;
+      t = t->next;
+      tn->next = t->next;
+    }
+    t->next = nullptr;
+    return nh;
   }
 };
